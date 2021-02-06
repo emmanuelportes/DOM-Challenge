@@ -6,10 +6,14 @@
     </head>
     <body>
         <button id="add-row" onclick="generateFirstTableHeader()">Add new Row </button>
-        <button id="add-column" disabled >Add new Column</button>
+        <button id="add-column" onclick="generateTableColumns()" >Add new Column</button>
         <button id="delete" disabled > Delete </button>
+        <button id="view" onclick="countTableRows()" > click it </button>
         <table id="main-table"></table>
         <script src="main.js"></script>
+
+        
+
     </body>
 </html>
 
