@@ -21,9 +21,41 @@ function generateFirstTableHeader(){
 }
 
 function generateTableRows(){
+    
+    tableRow = document.createElement("tr");
+    firstTableCell = document.createElement("td");
+    middleTableCell = document.createElement("td");
+    lastTableCell = document.createElement("td");
+    functionsButton = document.createElement("button");
+    functionsButton.innerHTML = "BTN";
+    checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
+    firstTableCell.appendChild(checkbox);
+    lastTableCell.appendChild(functionsButton);
+
+    for(let index = 0; index < countTableCells(); index++){
+        if(index === 0){
+            tableRow[index].appendChild(firstTableCell);
+
+        } else if (index === countTableCells() - 1){
+            tableRow[index].appendChild(lastTableCell);
+        } else {
+            tableRow[index].appendChild(middleTableCell);
+        }
 
 
+    }
+
+    mainTable.appendChild(tableRow);
  }
+
+ function AddNewRow(){
+    if(mainTable.childNodes.length < 2){
+        generateFirstTableHeader();
+    }else{
+        generateTableRows();
+    }
+}
 
 function generateTableColumns(){
 
@@ -51,10 +83,10 @@ function generateTableColumns(){
 
 
 function countTableRows(){ 
-   return mainTable.querySelectorAll("th").length;
+   return mainTable.getElementsByTagName("th").length;
 };
 
 function countTableCells(){ 
-    return mainTable.querySelector("tr").childElementCount;
+    return mainTable.getElementsByTagName("tr [0]").childNodes.length;
 }
 
