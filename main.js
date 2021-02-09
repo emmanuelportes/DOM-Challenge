@@ -21,27 +21,35 @@ function generateFirstTableHeader(){
 }
 
 function generateTableRows(){
-    
     tableRow = document.createElement("tr");
-    firstTableCell = document.createElement("td");
-    middleTableCell = document.createElement("td");
-    lastTableCell = document.createElement("td");
-    functionsButton = document.createElement("button");
-    functionsButton.innerHTML = "BTN";
-    checkbox = document.createElement("input");
-    checkbox.setAttribute("type", "checkbox");
-    firstTableCell.appendChild(checkbox);
-    lastTableCell.appendChild(functionsButton);
 
-    for(let index = 0; index < countTableCells(); index++){
-        if(index === 0){
-            tableRow[index].appendChild(firstTableCell);
+    for(let index = 1; index <= countTableCells() ; index++){
 
-        } else if (index === countTableCells() - 1){
-            tableRow[index].appendChild(lastTableCell);
+        
+        firstTableCell = document.createElement("td");
+        middleTableCell = document.createElement("td");
+        lastTableCell = document.createElement("td");
+        functionsButton = document.createElement("button");
+        functionsButton.innerHTML = "BTN";
+        checkbox = document.createElement("input");
+        checkbox.setAttribute("type", "checkbox");
+        firstTableCell.appendChild(checkbox);
+        lastTableCell.appendChild(functionsButton);
+
+        if(index === 1){
+
+            tableRow.appendChild(firstTableCell);
+
+        } else if (index === countTableCells()){
+
+            tableRow.appendChild(lastTableCell);
+
         } else {
-            tableRow[index].appendChild(middleTableCell);
+
+            tableRow.appendChild(middleTableCell);
+
         }
+
 
 
     }
@@ -50,7 +58,7 @@ function generateTableRows(){
  }
 
  function AddNewRow(){
-    if(mainTable.childNodes.length < 2){
+    if(mainTable.childNodes.length < 1){
         generateFirstTableHeader();
     }else{
         generateTableRows();
@@ -83,10 +91,13 @@ function generateTableColumns(){
 
 
 function countTableRows(){ 
-   return mainTable.getElementsByTagName("th").length;
+   return mainTable.getElementsByTagName("tr").length;
+   //console.log(mainTable.getElementsByTagName("tr").length);
+   
 };
 
 function countTableCells(){ 
-    return mainTable.getElementsByTagName("tr [0]").childNodes.length;
+   return mainTable.getElementsByTagName("th").length;
+    //console.log(mainTable.getElementsByTagName("th").length);
 }
 
