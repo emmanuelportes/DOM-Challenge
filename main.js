@@ -90,7 +90,10 @@ function makeCellsEditable(cell){
     });
 
     cell.addEventListener("keydown", e =>{
-        
+        if(e.keyCode === 13){
+            e.preventDefault();
+            cell.contentEditable = false;
+        }
     });
  
 }
